@@ -1,0 +1,22 @@
+{
+  "name": "namaste-dev",
+  "version": "1.0.0",
+  "description": "This namaste-dev is created by Akshay Daundkar",
+  "homepage": "https://github.com/akshay-daundkar-14/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/akshay-daundkar-14/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshay-daundkar-14/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Akshay",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
