@@ -1,14 +1,29 @@
+import  React  from "react";
+import  ReactDOM  from "react-dom/client";
+
+// JSX - HTML or XML like syntax --(Babel)--> React Element (JS Object) --> HTML render
+var jsxElement = <h1>Hello From JSX to Everyone!</h1>;
 
 
-console.log("Hello from Index.js");
+// Functional Component - js function which returns JSX.
 
-var child1 = React.createElement("h1",{id:"child1"},"Namaste React");
-var child2 = React.createElement("h3",{id:"child2"},"By Akshay Daundkar");
+const HeadingComponent = () =>{
+   return <h1>This is Heading component from Functional component</h1>
+}
 
-var parent = React.createElement("div",{id:'parent'},[child1,child2]);
+// Component Composition - One component in another component
+
+const BodyComponent = () =>{
+   return (
+    <div>
+        <HeadingComponent/>
+        <h3>This is Body component from Functional component</h3>
+    </div>
+   )
+}
+
 
 
 
 var root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(parent);
+root.render(<BodyComponent/>);
