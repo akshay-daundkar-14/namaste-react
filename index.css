@@ -173,6 +173,7 @@ body {
   margin-bottom: 3rem;
   position: relative;
   max-width: 520px;
+  display: flex;
 }
 
 .search-container::before {
@@ -365,4 +366,13 @@ body {
   }
 
   .nav-items li:not(:last-child) { display: none; }
+}
+
+
+.btn{
+  background-color: #E8631A;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 2px;
 }

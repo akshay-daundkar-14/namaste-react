@@ -25,7 +25,7 @@ ________________________________________________________________________________
 		
 	# React : 
 				-- var parent = React.createElement(tagType,{props},[children]);
-				-- This above react element is create a object 
+				-- This above react element is creates a js object.
 	# ReactDOM	: 
 				-- Link react object with root element
 				-- var root = ReactDOM.createRoot(document.getElementById("root"));
@@ -63,13 +63,13 @@ ________________________________________________________________________________
 					so that's why node_module is heavy.
 			
 			 --> In node_module, Every project has it's own package.json file because it help to maintain configuration
-					if that 
 
 	npx : When we need to execute the package 
 			-- e.g. npx parcel index.html
 			-- After execution of this command it will create dev build & host it on 1234 port.
 			
 	# Parcel :
+			-- Bundler
 			-- Dev build
 			-- Host - Local Server
 			-- HMR - Hot Module Repalcement
@@ -102,7 +102,7 @@ ________________________________________________________________________________
 			# JSX :
 					-- JSX is not HTML inside javascript
 					-- JSX is a HTML like Or XML like syntax
-					-- JSX is not a part of react, We can create React applications without using JSX.					
+					-- JSX is not a part of react, We can create React applications without using JSX.
 					-- var jsxHeading = <h1> This is a Heading </h1>; --> This is also React Element, Which is Object.
 					*- JSX (Transpiled before it reaches the JS engine) --> Parcel --> Babel(Compiler)
 					-- Babel => Compile JSX code into React Code.
@@ -112,7 +112,7 @@ ________________________________________________________________________________
 					
 			# Component:
 					-- It is reusable 
-					-- Types : 1. Funcational 2. Class
+					-- Types : 1. Functional 2. Class
 					
 						# Functional Based Component:
 							-- It is just a normal javascript function which returns piece of JSX.
@@ -172,3 +172,34 @@ ________________________________________________________________________________
 							-- When we want to export more than 1 element from file.
 							-- export: export const Component;
 							-- import: import {Component} from "path";
+							
+			# Why React is Faster ? :
+					-- Faster, Efficient DOM Manipulation
+					-- Virtual DOM
+							-- Representation of actual DOM.
+							-- It is React element means normal javascript object.
+					-- Diff Algorithm
+							-- It finds out the difference between old Virtual DOM & new Virtual DOM, it will actual update the DOM
+								on every render cycle.
+					-- Reconciliation (React Fiber):
+							-- React keeps an eye on state variable, 
+							   when there is change in any state variable, 
+							   react will find the difference between virtual DOM (js Object)
+							   & it will re-render our component.
+
+			
+			# React Hooks :
+					-- Hooks are nothing but the simple javascript utility functions.
+					-- It tries to keep the UI layer in sync with data.
+					
+				-- useState() : 
+						-- It maintain the state of the component.
+						-- Superpowerful state variables in react.
+						-- Whenever state variable updates it re-render the component.
+						-- Create state variable ===>  const [listOfRestaurants] = useState(defaultValue);
+						-- Update state variable ===>  const [listOfRestaurants,setListOfRestaurants] = useState(defaultValue);
+												 ===>  setListOfRestaurants(Updated Value);
+												 ===>  [listOfRestaurants,setListOfRestaurants] --> Destructure the array 
+												 
+				-- useEffect() :
+			
