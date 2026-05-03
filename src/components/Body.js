@@ -3,6 +3,7 @@ import data from "../utility/dummyData.json"
 import { useState, useEffect } from "react";
 import { SWIGGY_API_ENDPOINT_URL } from "../utility/constants";
 import Shimmer from "./Shimmer";
+import {Link} from "react-router-dom"
 
 const Body = () =>
 {
@@ -59,7 +60,9 @@ const Body = () =>
                     {
                         if(rest.card.card.info != null)
                         {
-                            return(<RestraurantCard key={rest?.card?.card?.info?.id} restObj={rest}/>)
+                            return(
+                               <Link key={rest?.card?.card?.info?.id}  to={"/restaurants/"+rest?.card?.card?.info?.id}><RestraurantCard restObj={rest}/> </Link>
+                            )
                         }
                     })                   
                 }

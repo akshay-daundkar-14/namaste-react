@@ -190,9 +190,11 @@ ________________________________________________________________________________
 			
 			# React Hooks :
 					-- Hooks are nothing but the simple javascript utility functions.
+					-- All hooks prefix with "use" keyword like useState, useEffect, useRouterError
 					-- It tries to keep the UI layer in sync with data.
 					
 				-- useState() : 
+						-- It is used to create local state variable in the functional component.
 						-- It maintain the state of the component.
 						-- Superpowerful state variables in react.
 						-- Whenever state variable updates it re-render the component.
@@ -201,5 +203,91 @@ ________________________________________________________________________________
 												 ===>  setListOfRestaurants(Updated Value);
 												 ===>  [listOfRestaurants,setListOfRestaurants] --> Destructure the array 
 												 
-				-- useEffect() :
+				
 			
+			
+_______________________________________________________________________________________________________________________	
+
+6. Exploring the world:
+
+			# Render in 2 way
+					-- 1. Load --> API --> Render
+					-- 2. Load --> Render --> API --> Render (Better User Experience)
+					
+			# useEffect() : 
+					-- It is a lifecycle hook that gets's called every time when our component gets render.
+					-- syntax :
+								==> useEffect(()=>{callback-function},[dependancy array])
+								
+					-- Dependacy array change the behaviour of useEffect hook							
+							-- If no dependancy array => useEffect will call on every render.
+							-- If dependancy array is empty => useEffect will call on initial render(just once).
+							-- If dependancy array is [btnName] or some variable value => useEffect will call on btnName or 
+								variable get's changed/updated.
+								
+			# CORS : 
+						-- Cross Origin Resource Sharing
+						-- Browser block to call API from one origin to another origin.
+						
+			# Shimmer UI :
+						-- Instead of showing initial blank page we will show the skeleton of UI.
+						
+						% Login/Logout button
+						% Search
+						
+					
+_______________________________________________________________________________________________________________________	
+
+7. Finding the path
+
+			# Routing
+					-- npm i react-router-dom					
+			# createBrowserRouter : Create all routes for application
+									createBrowserRouter([
+															{
+																path:"/",
+																element: <App/>,
+																children: [
+																			  {
+																				path:"/",
+																				element: <Body/>
+																			  },																			  																			  {
+																			  { 
+																				path:"/restaurants/:resId",
+																				element: <Body/>
+																			  }
+																		  ],
+																errorElement: <Error/>
+															}
+														]);
+														
+			# <RouterProvider router={appRoutes}/> : provides all routes to the root.
+			
+			# useRouterError :
+						-- hook provided by react-router-dom
+						-- it gives more information about error.
+			
+			# Outlet : Is being get replaced by the childerns component based on path.
+			
+			# Link : 
+					-- Instead of refreshing the page it will change the component.
+					-- Wrapper over anchor tag.
+					-- <Link to="/contact"> Contact Us </Link>
+					
+			# 2 Types of Routing:
+					-- 1. Client Side Routing
+								-- SPA 
+								-- Does not load the page
+					-- 2. Server Side Routing
+								-- Reload the whole page
+								-- Sends network call to about.html fetches that html & renders it on web page.
+								
+			# Dynamically pass Id's from route :
+					
+						{ 
+							path:"/restaurants/:resId",
+							element: <Body/>
+						}
+						
+					-- Send from : <Link to={"/restaurants/" + restId}> RESTAURANT - 01 </Link>
+					-- Listen By Hook: useParams();
