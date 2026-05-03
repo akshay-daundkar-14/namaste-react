@@ -374,5 +374,138 @@ body {
   padding: 10px;
   cursor: pointer;
   margin-left: 10px;
-  border-radius: 2px;
+  border-radius: 5px;
+}
+
+
+/* ================= Shimmer ===================== */
+
+/* ============================================================
+   SHIMMER / SKELETON LOADER
+   Matched to actual card design (4-col grid, tall image, pill rating)
+   ============================================================ */
+
+/* ── Sweep Animation ── */
+@keyframes shimmer-sweep {
+  0%   { background-position: -700px 0; }
+  100% { background-position:  700px 0; }
+}
+
+@keyframes shimmer-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Shared shimmer gradient applied to all skeleton blocks ── */
+.shimmer-card-image,
+.shimmer-card-heading,
+.shimmer-card-heading::after,
+.shimmer-card-rating,
+.shimmer-card-tags {
+  background: linear-gradient(
+    90deg,
+    #EAE4DC 0px,
+    #F5F0E8 45%,
+    #EAE4DC 90%
+  );
+  background-size: 700px 100%;
+  animation: shimmer-sweep 1.6s infinite linear;
+}
+
+/* ============================================================
+   SHIMMER CARD — matches white rounded card with shadow
+   ============================================================ */
+.shimmer-card-container {
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #EDE8E0;
+  box-shadow: 0 2px 12px rgba(28, 28, 30, 0.08);
+  animation: shimmer-fade-in 0.4s ease both;
+}
+
+/* Stagger cards 1–8 */
+.shimmer-card-container:nth-child(1) { animation-delay: 0.04s; }
+.shimmer-card-container:nth-child(2) { animation-delay: 0.08s; }
+.shimmer-card-container:nth-child(3) { animation-delay: 0.12s; }
+.shimmer-card-container:nth-child(4) { animation-delay: 0.16s; }
+.shimmer-card-container:nth-child(5) { animation-delay: 0.20s; }
+.shimmer-card-container:nth-child(6) { animation-delay: 0.24s; }
+.shimmer-card-container:nth-child(7) { animation-delay: 0.28s; }
+.shimmer-card-container:nth-child(8) { animation-delay: 0.32s; }
+
+/* ============================================================
+   IMAGE SKELETON — tall rectangle, flush to card top
+   ============================================================ */
+.shimmer-card-image {
+  width: 100%;
+  height: 210px;          /* matches screenshot image height */
+  display: block;
+  border-radius: 0;
+}
+
+.shimmer-card-img {
+  display: none;          /* real <img> hidden, wrapper is the skeleton */
+}
+
+/* ============================================================
+   DETAILS SECTION
+   ============================================================ */
+.shimmer-card-details {
+  padding: 1.1rem 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Restaurant name — can wrap to 2 lines in screenshot */
+.shimmer-card-heading {
+  height: 22px;
+  width: 75%;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Second line of heading (for long names like "Charcoal Eats - Biryani & Beyond") */
+.shimmer-card-heading::after {
+  content: '';
+  display: block;
+  height: 22px;
+  width: 45%;
+  border-radius: 5px;
+  margin-top: 8px;
+  background: inherit;
+  background-size: 700px 100%;
+  animation: shimmer-sweep 1.6s infinite linear;
+}
+
+/* Rating pill — small orange pill in screenshot */
+.shimmer-card-rating {
+  height: 28px;
+  width: 110px;
+  border-radius: 20px;     /* matches the pill shape */
+}
+
+/* Cuisine tags — one or two lines of small text */
+.shimmer-card-tags {
+  height: 14px;
+  width: 80%;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   RESPONSIVE — mirrors the main cards-container breakpoints
+   ============================================================ */
+@media (max-width: 1024px) {
+  .shimmer-card-image { height: 185px; }
+}
+
+@media (max-width: 768px) {
+  .shimmer-card-image { height: 165px; }
+}
+
+@media (max-width: 480px) {
+  .shimmer-card-image { height: 200px; }   /* single col, wider */
+  .shimmer-card-heading { width: 65%; }
+  .shimmer-card-tags    { width: 90%; }
 }
