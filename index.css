@@ -731,3 +731,8 @@ body {
   .menu-stat-divider { display: none; }
   .menu-stat-item { min-width: 80px; }
 }
+
+a{
+  text-decoration: none;
+  color: inherit;
+}

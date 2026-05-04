@@ -19,6 +19,8 @@ ________________________________________________
 
 									### Namaste - React ###
 
+									### Namaste - React ###
+
 _______________________________________________________________________________________________________________________
 		 
 1. Inception
@@ -111,7 +113,7 @@ ________________________________________________________________________________
 					-- Multiple lines of JSX can be wrapped inside the paranthesis ().
 					
 			# Component:
-					-- It is reusable 
+					-- It is reusable block of react.
 					-- Types : 1. Functional 2. Class
 					
 						# Functional Based Component:
@@ -143,7 +145,7 @@ ________________________________________________________________________________
 
 			#Props :
 					-- Nothing but the property
-					-- Whenever we want to pass data from component to component then we can use Prop.
+					-- Whenever we want to pass data from parent component to child component then we can use Prop.
 					-- Pass some dynamically data to component
 					-- Passing props to a component is like a passing a argument to a function
 					
@@ -156,7 +158,6 @@ ________________________________________________________________________________
 					-- If we give key, at that time it will maintain the the previous cards state & just render newly added one.
 					-- Never use index as the key because order may change for array items so index will also change.
 					-- Not using keys (not acceptable) << Index as key << Unique Id (Best Practice)
-						
 						
 _______________________________________________________________________________________________________________________		
 
@@ -217,7 +218,7 @@ ________________________________________________________________________________
 			# useEffect() : 
 					-- It is a lifecycle hook that gets's called every time when our component gets render.
 					-- syntax :
-								==> useEffect(()=>{callback-function},[dependancy array])
+								==> useEffect(()=>{callback-function   <unmounting> return ()=>{}},[dependancy array])
 								
 					-- Dependacy array change the behaviour of useEffect hook							
 							-- If no dependancy array => useEffect will call on every render.
@@ -291,3 +292,69 @@ ________________________________________________________________________________
 						
 					-- Send from : <Link to={"/restaurants/" + restId}> RESTAURANT - 01 </Link>
 					-- Listen By Hook: useParams();
+					
+_______________________________________________________________________________________________________________________	
+
+8. Let's get classy :
+
+			# Class Based Component:
+					-- Create by 'class' keyword & it extends React.Component
+					-- It has render() method that return JSX code.
+					-- State : 
+								-- in constructor, we can create 'this.state = {count:0,count2:0}'
+								-- Update State : this.setState({count:this.count+1});
+					-- Props:
+								-- in constructor(props) followed by --> super(props)
+								-- USE : this.props.name
+								
+					-- componentDidMount():
+								-- Will get called when component get's rendered.
+								-- To make API calls
+								
+					-- componentDidUpdate():
+								-- this will get called at the end of the update lifecycle.
+								
+					-- componentWillUnmount():
+								-- this will get called just before component will get unmount.
+								
+					-- Life-Cycle : 
+								constructor --> render() --> componentDidMount()
+								
+					-- Life-Cycle in Depth:
+								-- Parent Constructor
+									-- Parent Render
+										-- First Child Constructor
+										-- First Child Render
+										
+										-- Second Child Constructor
+										-- Second Child Render
+										
+										-- First Child componentDidMount
+										-- Second Child componentDidMount
+									
+									-- Parent componentDidMount
+									
+							# It Batches Render phase together.
+							# It Batches Commit(after DOM update) phase together.
+							
+					-- Life-Cycle With Diagram :
+					
+							--------- Mounting ----------
+							
+							Constructor (dummy data)
+							render (dummy data)
+								<HTML Dummy>
+							componentDidMount()
+								<API call>
+								<this.setState> -> State variable is updated
+								
+							--------- Update -------------
+							
+							render (updated data)
+								<HTML NEW API DATA>
+							componentDidUpdate()
+							
+							--------- UnMounting ---------
+							componentWillUnmount()
+							
+								
