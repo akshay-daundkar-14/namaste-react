@@ -356,5 +356,29 @@ ________________________________________________________________________________
 							
 							--------- UnMounting ---------
 							componentWillUnmount()
-							
+
+_______________________________________________________________________________________________________________________	
+
+9. Optimizing our app :
+
+		-- Modularity : cut application into small chunks to have Reusability, Maintainability, Testability.
+		e.g.
+		-- Custom Hooks : RestaurantMenu should only deal with UI/ HTML part it should not care about how we are fetching the data.
+			fetching data can be handed over to 'custom hooks'.
+			
+		-- Chunking | Dynamic Bundling | Code Spliting | Lazy Loading
+			Break down application into smaller pieces.
+			
+		-- Lazy Loading : 
+				-- Loading component on demand.
+				-- instead of direcly importing any component we can use "lazy" function.
+						const Grocery = lazy(()=> import("../component/Grocery"));
+				-- then when we try to load it at that time it will not be available so for that we need 'Suspense' component
+						wrap 'Suspense' around the Grocery component in route configuration.
+						{
+							path:"/grocery",
+							element: <Suspense fallback={<Shimmer/>}> <Grocery/> </Suspense>
+						}
+			
+		
 								

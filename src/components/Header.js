@@ -1,6 +1,7 @@
 import { LOGO_URL } from "../utility/constants";
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import useOnlineStatus from "../utility/useOnlineStatus";
 
 const Header = () =>
 {
@@ -11,6 +12,7 @@ const Header = () =>
         (userState === "Login") ? setUserState("Logout") : setUserState("Login");
     };
 
+    const isOnline = useOnlineStatus();
 
     return(
         <div className="header-container">
@@ -19,9 +21,11 @@ const Header = () =>
             </div>
             <div className="nav-items-container">
                 <ul className="nav-items">
+                    <li>{isOnline ? "Online":"Offline"}</li>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/contact">Contact Us</Link></li>
                     <li><Link to="/about">About Us</Link></li>
+                    <li><Link to="/grocery">Grocery</Link></li>
                     <li><Link to="/cart">Cart</Link></li>
                 </ul>
                 <button className="btn" onClick={fn_UserStateBtnClicked}>{userState}</button>

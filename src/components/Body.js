@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { SWIGGY_API_ENDPOINT_URL } from "../utility/constants";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom"
+import useOnlineStatus from "../utility/useOnlineStatus";
 
 const Body = () =>
 {
@@ -41,6 +42,15 @@ const Body = () =>
     const fn_FilterOnSearch = (restaurantName)=>{
         let filteredOnSearch = listOfRestaurant.filter(rest => rest?.card?.card?.info?.name.toLowerCase().includes(restaurantName));
         setFilteredListOfRestaurant(filteredOnSearch);
+    }
+
+    const isOnline = useOnlineStatus();
+
+    if(!isOnline)
+    {
+        return (
+            <h1>It seems like you are offline. Please check your internet connection.</h1>
+        )
     }
 
     return listOfRestaurant.length === 0 ? (<Shimmer/>) : (
